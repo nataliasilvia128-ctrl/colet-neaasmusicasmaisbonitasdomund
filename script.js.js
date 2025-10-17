@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ondas = document.querySelector('.ondas');
     const frase = document.querySelector('.frase');
     let audioFaixa = new Audio();  // Áudio da faixa
-    let audioStatic = new Audio('audio/vinyl_static.mp3');  // Chiado de vinil
+    let audioStatic = new Audio('https://github.com/nataliasilvia128-ctrl/colet-neaasmusicasmaisbonitasdomund/blob/5187a29c544d5980a58ce2a93a01ddcc564df437/audio/vinyl_static.mp3');  // Chiado de vinil
     audioStatic.loop = true;
     audioStatic.volume = 0.2;  // Volume baixo
 
@@ -39,12 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 100);
 
             // Reproduz som de vinil sendo colocado com tratamento de erro
-            let audioStart = new Audio('audio/vinyl_start.mp3');
+            let audioStart = new Audio('https://github.com/nataliasilvia128-ctrl/colet-neaasmusicasmaisbonitasdomund/blob/5187a29c544d5980a58ce2a93a01ddcc564df437/audio/vinyl_start.mp3');
             audioStart.onerror = () => console.error('Erro ao carregar vinyl_start.mp3');
             audioStart.play();
 
             setTimeout(() => {
-                audioFaixa.src = `audio/faixa${faixa}.mp3`;
+                audioFaixa.src = `https://github.com/nataliasilvia128-ctrl/colet-neaasmusicasmaisbonitasdomund/audio/faixa${faixa}.mp3`;
                 audioFaixa.onerror = () => console.error(`Erro ao carregar audio/faixa${faixa}.mp3`);  // Tratamento de erro
                 audioFaixa.play();
                 audioStatic.play();  // Toca chiado
