@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Música Mais Bonita do Mundo</title>
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Ícone opcional para polimento -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,15 +14,13 @@
             <!-- Parte Esquerda: Vitrola -->
             <div class="vitrola-section">
                 <div class="vitrola">
-                    <div class="agulha"></div> <!-- Agulha adicionada -->
-                    <div class="prato">
-                        <!-- O disco será adicionado aqui via JavaScript -->
-                    </div>
-                    <div class="ondas"></div> <!-- Ondas sonoras -->
+                    <img src="images/agulha.png" alt="Agulha da vitrola" class="agulha" draggable="true">
+                    <div class="prato"></div> <!-- Apenas sombra agora -->
+                    <div class="ondas"></div>
                 </div>
                 <div class="frase-container">
                     <p class="frase">A música mais bonita do mundo é o som da tua voz.</p>
-                    <button id="repeat-button">Repetir faixa 🔁</button> <!-- Botão de repetir -->
+                    <button id="repeat-button">🔁 Repetir faixa</button>
                 </div>
             </div>
 
