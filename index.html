@@ -4,33 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Música Mais Bonita do Mundo</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Ícone opcional para polimento -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Discos na parte superior -->
-        <div class="discos">
-            <div class="disco" id="disco1" data-faixa="1">
-                <img src="images/disco1.png" alt="Faixa 1 — Me Faz Sorrir">
-                <p>Faixa 1 — “Me Faz Sorrir”</p>
+    <div class="main-container">
+        <div class="layout">
+            <!-- Parte Esquerda: Vitrola -->
+            <div class="vitrola-section">
+                <div class="vitrola">
+                    <div class="agulha"></div> <!-- Agulha adicionada -->
+                    <div class="prato">
+                        <!-- O disco será adicionado aqui via JavaScript -->
+                    </div>
+                    <div class="ondas"></div> <!-- Ondas sonoras -->
+                </div>
+                <div class="frase-container">
+                    <p class="frase">A música mais bonita do mundo é o som da tua voz.</p>
+                    <button id="repeat-button">Repetir faixa 🔁</button> <!-- Botão de repetir -->
+                </div>
             </div>
-            <div class="disco" id="disco2" data-faixa="2">
-                <img src="images/disco2.png" alt="Faixa 2 — Saudade">
-                <p>Faixa 2 — “Saudade”</p>
+
+            <!-- Parte Direita: Discos -->
+            <div class="discos-section">
+                <div class="disco" id="disco1" data-faixa="1">
+                    <img src="images/disco1.png" alt="Faixa 1 — Me Faz Sorrir">
+                    <p class="legenda">Faixa 1 — “Me Faz Sorrir”</p>
+                </div>
+                <div class="disco" id="disco2" data-faixa="2">
+                    <img src="images/disco2.png" alt="Faixa 2 — Saudade">
+                    <p class="legenda">Faixa 2 — “Saudade”</p>
+                </div>
             </div>
         </div>
-
-        <!-- Vitrola central -->
-        <div class="vitrola">
-            <div class="prato">
-                <!-- O disco será adicionado aqui via JavaScript -->
-            </div>
-            <div class="ondas"></div> <!-- Ondas sonoras -->
-        </div>
-
-        <!-- Frase abaixo da vitrola -->
-        <div class="frase">A música mais bonita do mundo é o som da tua voz.</div>
     </div>
 
     <script src="script.js"></script>
