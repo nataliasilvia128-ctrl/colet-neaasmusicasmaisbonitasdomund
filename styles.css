@@ -1,15 +1,15 @@
 /* Estilos gerais */
 body {
-    background-color: #ffffff; /* Fundo branco */
-    font-family: 'Playfair Display', 'Cormorant Garamond', serif; /* Nova fonte elegante */
-    color: #D72638; /* Vermelho escuro */
+    background-color: #ffffff;
+    font-family: 'Playfair Display', serif;
+    color: #D72638;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    box-shadow: inset 0 0 20px #f7f7f7; /* Sombra suave para profundidade */
+    box-shadow: inset 0 0 20px #f7f7f7;
     overflow: hidden;
 }
 
@@ -27,7 +27,7 @@ body {
 }
 
 .vitrola-section {
-    width: 60%; /* Vitrola dominante */
+    width: 60%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -38,45 +38,36 @@ body {
 .vitrola {
     width: 80%;
     height: 60%;
-    background-color: #f0f0f0; /* Cinza-claro */
-    border-radius: 10px;
     position: relative;
-    box-shadow: 0 4px 8px rgba(247, 247, 247, 0.5); /* Sombra suave */
-    background-image: linear-gradient(to bottom right, #ffffff, #f7f7f7); /* Detalhes sutis */
+    box-shadow: inset 0 0 20px #f7f7f7; /* Sombra circular suave */
 }
 
 .agulha {
     width: 20%;
-    height: 20%;
-    background-color: #d4a17d; /* Dourado rosado */
     position: absolute;
     top: 20%;
-    left: 40%;
-    transform: rotate(45deg);
-    transition: transform 1s ease-in-out; /* Animação suave */
-    opacity: 0; /* Inicia invisível */
+    right: 10%;
+    cursor: grab;
+    transition: transform 1s ease-in-out;
 }
 
 .prato {
     width: 60%;
     height: 60%;
-    background-color: #ffffff;
-    border: 2px solid #d4a17d; /* Dourado rosado */
+    background: radial-gradient(circle at center, #f7f7f7 0%, #ffffff 70%);
     border-radius: 50%;
+    aspect-ratio: 1/1;
     position: absolute;
     top: 20%;
     left: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .disco-no-prato {
-    width: 80%;
-    height: 80%;
-    background-size: cover;
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     animation: rotate 4s linear infinite;
+    aspect-ratio: 1/1;
 }
 
 .ondas {
@@ -85,14 +76,12 @@ body {
     left: 50%;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(247, 247, 247, 0.3) 0%, transparent 70%);
     opacity: 0;
     animation: pulse 2s infinite ease-in-out;
 }
 
 .frase-container {
     text-align: center;
-    margin-top: 20px;
     opacity: 0;
     transition: opacity 1s ease-in-out;
 }
@@ -100,7 +89,7 @@ body {
 .frase {
     font-style: italic;
     font-size: 1.2em;
-    text-shadow: 0 0 5px rgba(215, 38, 56, 0.3); /* Brilho suave */
+    text-shadow: 0 0 5px rgba(215, 38, 56, 0.3);
 }
 
 #repeat-button {
@@ -110,62 +99,11 @@ body {
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(247, 247, 247, 0.5);
+    box-shadow: 0 2px 5px #f7f7f7;
     transition: box-shadow 0.3s ease-in-out;
-}
-
-#repeat-button:hover {
-    box-shadow: 0 4px 8px rgba(215, 38, 56, 0.3);
 }
 
 .discos-section {
     width: 40%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.disco {
-    width: 200px;
-    height: 200px;
-    margin: 20px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(247, 247, 247, 0.4);
-    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.disco img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-}
-
-.legenda {
-    text-align: center;
-    font-style: italic;
-    font-size: 1em;
-    margin-top: 10px;
-}
-
-@keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.1); opacity: 0.8; }
-    100% { transform: scale(1); opacity: 0.5; }
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .layout {
-        flex-direction: column;
-    }
-    .vitrola-section, .discos-section {
-        width: 100%;
-    }
-}
+    display
