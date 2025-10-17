@@ -1,7 +1,7 @@
 /* Estilos gerais */
 body {
-    background-color: #ffffff;
-    font-family: 'Playfair Display', serif;
+    background: linear-gradient(to bottom, #ffffff, #fafafa);
+    font-family: 'Cormorant Garamond', serif;
     color: #D72638;
     margin: 0;
     padding: 0;
@@ -9,7 +9,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    box-shadow: inset 0 0 20px #f7f7f7;
     overflow: hidden;
 }
 
@@ -39,14 +38,15 @@ body {
     width: 80%;
     height: 60%;
     position: relative;
-    box-shadow: inset 0 0 20px #f7f7f7; /* Sombra circular suave */
+    box-shadow: inset 0 0 20px #f7f7f7;
 }
 
 .agulha {
     width: 20%;
     position: absolute;
-    top: 20%;
+    top: 10%;
     right: 10%;
+    filter: drop-shadow(0 0 5px #d4a17d);
     cursor: grab;
     transition: transform 1s ease-in-out;
 }
@@ -60,6 +60,7 @@ body {
     position: absolute;
     top: 20%;
     left: 20%;
+    box-shadow: 0 4px 8px #f7f7f7;
 }
 
 .disco-no-prato {
@@ -88,7 +89,8 @@ body {
 
 .frase {
     font-style: italic;
-    font-size: 1.2em;
+    font-size: 1.1em;
+    font-weight: 500;
     text-shadow: 0 0 5px rgba(215, 38, 56, 0.3);
 }
 
@@ -106,4 +108,56 @@ body {
 .discos-section {
     width: 40%;
     height: 100%;
-    display
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.disco {
+    width: 30%; /* 50% menor que o prato */
+    height: auto;
+    cursor: pointer;
+    box-shadow: 0 4px 8px #f7f7f7;
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    aspect-ratio: 1/1;
+}
+
+.disco img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.legenda {
+    text-align: center;
+    font-style: italic;
+    font-size: 1.1em;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 0.5; }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .layout {
+        flex-direction: column;
+    }
+    .vitrola-section, .discos-section {
+        width: 100%;
+    }
+    .disco {
+        width: 40%;
+    }
+}
