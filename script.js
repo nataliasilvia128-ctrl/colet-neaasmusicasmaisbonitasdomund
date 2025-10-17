@@ -1,69 +1,81 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Script carregado e pronto!');  // Log para depuração inicial
+    console.log('Script carregado e pronto!');
     const discos = document.querySelectorAll('.disco');
     const prato = document.querySelector('.prato');
+    const agulha = document.querySelector('.agulha');
     const ondas = document.querySelector('.ondas');
-    const frase = document.querySelector('.frase');
-    let audioFaixa = new Audio();  // Áudio da faixa
-    let audioStatic = new Audio('https://raw.githubusercontent.com/nataliasilvia128-ctrl/colet-neaasmusicasmaisbonitasdomund/main/audio/vinyl_static.mp3');  // Chiado de vinil - use a branch correta
+    const fraseContainer = document.querySelector('.frase-container');
+    const repeatButton = document.getElementById('repeat-button');
+    let audioFaixa = new Audio();
+    let audioStatic = new Audio('https://raw.githubusercontent.com/nataliasilvia128-ctrl/colet-neaasmusicasmaisbonitasdomund/main/audio/vinyl_static.mp3');
     audioStatic.loop = true;
-    audioStatic.volume = 0.2;  // Volume baixo
+    audioStatic.volume = 0.2;
 
-    // Função para parar todos os áudios e resetar
     function pararAudios() {
         audioFaixa.pause();
         audioFaixa.currentTime = 0;
         audioStatic.pause();
         audioStatic.currentTime = 0;
-        ondas.style.display = 'none';  // Esconde ondas
-        frase.style.opacity = '0';  // Esconde frase
+        ondas.style.opacity = 0;
+        fraseContainer.style.opacity = 0;
+        agulha.style.transform = 'rotate(45deg)'; // Agulha volta
+        agulha.style.opacity = 0;
     }
 
     discos.forEach(disco => {
         disco.addEventListener('click', () => {
-            console.log(`Clicou no disco com faixa: ${disco.dataset.faixa}`);  // Log do clique
+            console.log(`Clicou no disco com faixa: ${disco.dataset.faixa}`);
             const faixa = disco.dataset.faixa;
-            pararAudios();  // Para qualquer áudio em reprodução
+            pararAudios();
             
-            const discoElement = disco.cloneNode(true);  // Clona o disco
-            discoElement.classList.add('disco-no-prato');  // Adiciona classe para rotação
+            const discoElement = disco.cloneNode(true);
+            discoElement.classList.add('disco-no-prato');
             discoElement.style.position = 'absolute';
-            discoElement.style.top = '0';  // Posição inicial
-            discoElement.style.left = '50%';  // Centraliza
-            discoElement.style.transform = 'translateX(-50%)';
-            discoElement.style.transition = 'top 1s ease-in-out';  // Animação
-            
+            discoElement.style.top = '50%';
+            discoElement.style.left = '50%';
+            discoElement.style.transform = 'translate(-50%, -50%)';
             prato.appendChild(discoElement);
+
+            // Animação de movimento do disco
             setTimeout(() => {
-                discoElement.style.top = '50px';  // Ajuste conforme layout
+                discoElement.style.transition = 'top 1s ease-in-out, left 1s ease-in-out';
+                discoElement.style.top = '20%'; // Ajuste para vitrola
+                discoElement.style.left = '20%';
             }, 100);
 
-            // Reproduz som de vinil sendo colocado com tratamento de erro
-            let audioStart = new Audio('https://raw.githubusercontent.com/nataliasilvia128-ctrl/colet-neaasmusicasmaisbonitasdomund/main/audio/vinyl_start.mp3');  // Caminho corrigido
+            let audioStart = new Audio('https://raw.githubusercontent.com/nataliasilvia128-ctrl/colet-neaasmusicasmaisbonitasdomund/main/audio/vinyl_start.mp3');
             audioStart.onerror = () => console.error('Erro ao carregar vinyl_start.mp3');
             audioStart.play();
 
             setTimeout(() => {
-                audioFaixa.src = `https://raw.githubusercontent.com/nataliasilvia128-ctrl/colet-neaasmusicasmaisbonitasdomund/main/audio/faixa${faixa}.mp3`;  // Caminho corrigido para faixas
+                agulha.style.opacity = 1; // Agulha aparece
+                agulha.style.transform = 'rotate(0deg)'; // Agulha desce
+                ondas.style.opacity = 1;
+                fraseContainer.style.opacity = 1;
+                audioFaixa.src = `https://raw.githubusercontent.com/nataliasilvia128-ctrl/colet-neaasmusicasmaisbonitasdomund/main/audio/faixa${faixa}.mp3`;
                 audioFaixa.onerror = () => console.error(`Erro ao carregar audio/faixa${faixa}.mp3`);
                 audioFaixa.play();
-                audioStatic.play();  // Toca chiado
-                ondas.style.display = 'block';  // Mostra ondas
-                frase.style.opacity = '1';  // Mostra frase
-            }, 1000);  // 1 segundo de delay
+                audioStatic.play();
+            }, 1000);
 
             audioFaixa.onended = () => {
                 console.log('Áudio da faixa terminou');
                 setTimeout(() => {
                     audioStatic.pause();
                     audioStatic.currentTime = 0;
-                    ondas.style.display = 'none';
-                    frase.style.opacity = '0';
-                    prato.removeChild(discoElement);  // Remove disco
-                }, 5000);  // 5 segundos de chiado
+                    setTimeout(() => {
+                        agulha.style.transform = 'rotate(45deg)';
+                        agulha.style.opacity = 0;
+                        discoElement.style.top = 'initial'; // Retorna disco
+                        discoElement.style.left = 'initial';
+                    }, 2000); // 2 segundos para agulha subir
+                }, 5000); // 5 segundos de chiado
             };
+
+            repeatButton.addEventListener('click', () => {
+                audioFaixa.play();
+                audioStatic.play();
+            });
         });
     });
-});
-
 });
