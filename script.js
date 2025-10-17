@@ -99,7 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     repeatButton.addEventListener('click', () => {
         if (audioFaixa.paused && currentDisco) {
-            agulha.style.transform = 'translate(0, 0) rotate(0deg)';
             playAudio();
         }
     });
