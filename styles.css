@@ -46,7 +46,6 @@ body {
     position: absolute;
     top: 10%;
     right: 10%;
-    filter: drop-shadow(0 0 5px #d4a17d);
     cursor: grab;
     transition: transform 1s ease-in-out;
 }
